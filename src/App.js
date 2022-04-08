@@ -1,25 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const product = [
+    {name: 'Computer', prise: '$99.56'},
+    {name: 'Laptop', prise: '$59.51'},
+    {name: 'Mobile', prise: '$49.86'}
+  ]
+  // const nayoks = ['Sakib', 'Rubel', 'Manna', 'Emon', 'Samim', 'Polash']
+  // nayoks.forEach(nayok => console.log(nayok))
+
+  const foods = ['Apple', 'Banana', 'Mango']
+  foods.forEach(food => console.log(food))
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Product product={product[0]}></Product>
+        <Product product={product[1]}></Product>
+        <Product product={product[2]}></Product>
       </header>
     </div>
   );
+}
+
+function Product(props) {
+
+  const productStyle = {
+    border: '2px solid red',
+    margin: '10px',
+    padding: '10px',
+    width: '500px'
+  }
+
+  const {name, prise} = props.product
+
+  return (
+    <div style={productStyle}>
+      <h3>{name}</h3>
+      <h4>{prise}</h4>
+      <button>Buy Now</button>
+    </div>
+  )
 }
 
 export default App;
