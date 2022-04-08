@@ -6,8 +6,6 @@ function App() {
     {name: 'Laptop', prise: '$59.51'},
     {name: 'Mobile', prise: '$49.86'}
   ]
-  // const nayoks = ['Sakib', 'Rubel', 'Manna', 'Emon', 'Samim', 'Polash']
-  // nayoks.forEach(nayok => console.log(nayok))
 
   const foods = ['Apple', 'Banana', 'Mango']
   foods.forEach(food => console.log(food))
