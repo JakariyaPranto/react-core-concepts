@@ -1,24 +1,62 @@
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const product = [
+  const products = [
     {name: 'Computer', prise: '$99.56'},
     {name: 'Laptop', prise: '$59.51'},
-    {name: 'Mobile', prise: '$49.86'}
+    {name: 'Tab', prise: '$49.86'},
+    {name: 'Mobile', prise: '$39.86'}
   ]
 
-  const foods = ['Apple', 'Banana', 'Mango']
-  foods.forEach(food => console.log(food))
-
+  const fruits = ['Apple', 'Banana', 'Mango', 'Jackfruit', 'Pineapple', 'Orange']
   return (
     <div className="App">
       <header className="App-header">
-        <Product product={product[0]}></Product>
-        <Product product={product[1]}></Product>
-        <Product product={product[2]}></Product>
+
+        <Users></Users>
+        
+        <Counter></Counter>
+
+        <ul>
+          {fruits.map((fruit => <li>{fruit}</li>))}
+        </ul>
+
+        {
+          products.map(pd => <Product product={pd}></Product>)
+        }
+
       </header>
     </div>
   );
+}
+
+function Users() {
+  const [users, setUsers] = useState([])
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => setUsers(data))
+  })
+
+  return (
+    <ul>
+      {
+        users.map(user => <li>{user.name}</li>)
+      }
+    </ul>
+  )
+}
+
+function Counter() {
+  const [count, setCount] = useState(10)
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+      <button onClick={() => setCount(count - 1)}>Decrease</button>
+    </div>
+  )
 }
 
 function Product(props) {
